@@ -38,3 +38,13 @@ build (msg1:rest) = insert msg1 (build rest)
 inOrder :: MessageTree -> [LogMessage]
 inOrder Leaf = []
 inOrder (Node mt1 lmsg mt2) = (inOrder mt1) ++ [lmsg] ++ (inOrder mt2)
+
+-- Exercise 5
+whatWentWrong :: [LogMessage] -> [String]
+selectMsg :: LogMessage -> String
+
+selectMsg (LogMessage _ _ msg) = msg
+whatWentWrong msgs = map selectMsg
+	(inOrder
+	 (build
+	  (filter (\msg -> (LogMessage )) msgs)))
