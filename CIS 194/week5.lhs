@@ -24,3 +24,16 @@ Type classes are sets of types that have certain operations defined for them...
 > class Eq a where
 > 	(==) :: a -> a -> Bool
 > 	(/=) :: a -> a -> Bool
+
+Eq is declared to be a type class with a single parameter, a.
+Any type which wants to be an instance of Eq must define two functions (==) and
+(/=), with the indicated type signatures.
+
+> data Foo = F Int | G Char
+> instance E Foo where
+> 	(F i1) == (F i2) = i1 == i2
+> 	(G c1) == (G c2) = c1 == c2
+> 	_ == _ = False
+> 	foo1 /= foo2 = not (foo1 == foo2)
+
+	 
